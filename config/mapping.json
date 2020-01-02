@@ -1,0 +1,26 @@
+[
+  {
+    "Category": "Battery",
+    "Description": "Max. battery current [A]",
+    "Default_Value": 13,
+    "low_limit": 8,
+    "high_limit": 18,
+    "Maps_To_Var": "DEFAULT_VALUE_BATTERY_CURRENT_MAX"
+  },
+  {
+    "Category": "Battery",
+    "Description": "Max. battery power [W]",
+    "Default_Value": 510,
+    "low_limit": "False",
+    "high_limit": "False",
+    "Maps_To_Var": "DEFAULT_VALUE_TARGET_BATTERY_MAX_POWER_X10"
+  },
+  {
+    "Category": "Motor",
+    "Description": "Rotor offset angle [°]",
+    "Default_Value": 10,
+    "low_limit": 0,
+    "high_limit": "False",
+    "Maps_To_Var": "MOTOR_ROTOR_OFFSET_ANGLE"
+  }
+]

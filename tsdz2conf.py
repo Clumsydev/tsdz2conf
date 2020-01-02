@@ -3,7 +3,7 @@ from pathlib import Path
 from PySide2 import QtCore
 from PySide2.QtWidgets import QMainWindow, QApplication, QWidget, QTabWidget, QVBoxLayout,  QHBoxLayout, \
                             QStyleOptionTab, QStyleOptionFocusRect, QStylePainter, QTabBar, QTabWidget, QStyle, \
-                            QLineEdit, QLabel, QFormLayout, QRadioButton, QGroupBox
+                            QLineEdit, QLabel, QFormLayout, QRadioButton, QGroupBox, QPushButton
 
 class App(QMainWindow):
 
@@ -95,7 +95,23 @@ class App(QMainWindow):
         self.motor_lay.addLayout(self.motor_form_lay)
         self.motor_w.setLayout(self.motor_lay)
 
+        self.cmdButW = QWidget()
+        self.cmdBut_lay = QHBoxLayout(self.cmdButW)
+        self.cmdBut_lay.setAlignment(QtCore.Qt.AlignRight)
+        self.cmdButW.setLayout(self.cmdBut_lay)
+
+        self.cmdBut_compileBut, self.cmdBut_flashBut, self.cmdBut_compileandflashBut = QPushButton(), QPushButton(), QPushButton()
+        bObjs = [self.cmdBut_compileBut, self.cmdBut_flashBut, self.cmdBut_compileandflashBut]
+        bTexts = ["Compile", "Flash", "Compile and Flash"]
+
+        for i,button in enumerate(bObjs):
+            button.setText(bTexts[i])
+            bWidth = button.fontMetrics().boundingRect(str(button.text)).width() + 15 # limits button size
+            button.setMaximumWidth(bWidth)
+            self.cmdBut_lay.addWidget(button)
+
         self.layout.addWidget(self.w)
+        self.layout.addWidget(self.cmdButW)
         self.show()
 
     def getDataFromJSON(self, file):
